@@ -41,6 +41,25 @@
     font-size: 9pt; letter-spacing: 0.04em; margin-bottom: 6mm;
   }
   .hero__title { font-size: 30pt; line-height: 1; margin-bottom: 5mm; }
+  /* 3 điểm vượt trội trên trang bìa */
+  .usps {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    max-width: 100%;
+    margin: 6mm 0 0;
+    page-break-inside: avoid; break-inside: avoid;
+  }
+  .usp {
+    display: block !important;
+    background: #fff !important;
+    border: 0.5pt solid #bbb !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    padding: 4mm;
+  }
+  .usp__ic { background: #f0f0f0 !important; color: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; margin-bottom: 2mm; }
+  .usp strong { display: block; font-size: 11pt; margin-bottom: 1.5mm; }
+  .usp__sub { display: block; font-size: 8.5pt; color: #333 !important; }
   .hero__title .ital { color: #000; }
   .hero__sub { font-size: 11pt; color: #222; max-width: 100%; margin-bottom: 8mm; }
   .hero__facts {
@@ -98,6 +117,9 @@
     background: #fff !important;
     box-shadow: none;
   }
+  /* Thẻ QR khi in: bỏ tạo hình ô cửa sổ (bo góc lớn + mây) cho gọn khổ giấy */
+  .claims__qr { border-radius: 3mm !important; padding: 5mm 4mm !important; overflow: visible !important; }
+  .claims__qr::before { display: none !important; }
   .claims__steps li span, .hotline {
     background: #f5f5f5 !important;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
@@ -179,4 +201,55 @@
   .foot__logo span, .foot__logo { color: #000 !important; }
 
   a { color: #000 !important; text-decoration: none; }
+
+  /* ---- Hướng dẫn Cổng bồi thường (UCP) ---- */
+  .lbox { display: none !important; }
+  .walk__dots, .walk__nav, .brw__zoom { display: none !important; }
+  /* Thẻ QR: bỏ nút bấm (in ra không bấm được), chỉ giữ mã QR để quét */
+  .qr__or, .claims__qr .btn { display: none !important; }
+
+  /* In: bỏ 2 cột, liệt kê đầy đủ mọi bước (không phụ thuộc trạng thái is-active) */
+  .walk { display: block !important; }
+  .walk__view { position: static !important; page-break-inside: avoid; break-inside: avoid; margin-top: 4mm; }
+  .walk__steps { display: block !important; }
+  .walk__step { page-break-inside: avoid; break-inside: avoid; margin-bottom: 2.5mm; }
+  .walk__btn {
+    background: #fff !important;
+    border: 0.5pt solid #bbb !important;
+    box-shadow: none !important;
+    transform: none !important;
+    padding: 3mm 4mm;
+  }
+  .walk__n { background: #000 !important; color: #fff !important; box-shadow: none !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .walk__txt em { display: block !important; color: #333 !important; }
+
+  /* Khung trình duyệt → chỉ giữ ảnh, bỏ chrome giả lập */
+  .brw { border: 0.5pt solid #bbb !important; box-shadow: none !important; }
+  .brw__bar { background: #f2f2f2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .brw__stage { height: auto !important; min-height: 0; background: #fff !important; padding: 3mm; overflow: visible !important; text-align: center; }
+  /* trả ảnh về luồng tĩnh — absolute sẽ làm khung sập chiều cao khi in */
+  .brw__stage img {
+    position: static !important;
+    inset: auto !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    max-height: 90mm !important;
+    box-shadow: none !important;
+    animation: none !important;
+  }
+
+  /* Chuẩn bị hồ sơ + trạng thái */
+  .prep__list li span { background: #f0f0f0 !important; color: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .stat-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; }
+  .stat { border: 0.5pt solid #bbb !important; box-shadow: none !important; page-break-inside: avoid; break-inside: avoid; }
+  .stat__chip { background: #eee !important; color: #000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* ---- Điều khoản & xác nhận đồng ý ---- */
+  .consent__list { border: 0.75pt solid #999 !important; box-shadow: none !important; }
+  .consent__list li::before { border-color: #000 !important; }
+  .consent__list li { page-break-inside: avoid; break-inside: avoid; }
+  /* bản in không bấm được link -> in kèm địa chỉ đầy đủ */
+  .consent__list a { text-decoration: underline !important; font-weight: 600; }
+  .consent__list a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; font-weight: 400; color: #555; }
+  .foot__policies a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; color: #555; }
 }
