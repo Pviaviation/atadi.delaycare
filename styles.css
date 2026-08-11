@@ -90,8 +90,10 @@ a { color: inherit; text-decoration: none; }
   gap: 13px;
   line-height: 1;
 }
+.brand-link { display: block; line-height: 0; transition: opacity 0.2s ease; }
+.brand-link:hover { opacity: 0.72; }
 .nav__logo-pvi { height: 30px; width: auto; display: block; }
-.nav__logo-atadi { height: 19px; width: auto; display: block; }
+.nav__logo-atadi { height: 26px; width: auto; display: block; }
 .nav__logo-div { width: 1px; height: 24px; background: var(--line); flex: none; }
 .nav__links { display: flex; align-items: center; gap: 36px; }
 .nav__links > a:not(.nav__cta) {
@@ -802,7 +804,7 @@ a { color: inherit; text-decoration: none; }
 .foot__brand { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 24px; }
 .foot__logos { display: flex; align-items: center; gap: 18px; flex: none; }
 .foot__logo-img { width: auto; display: block; }
-.foot__logo-img--atadi { height: 26px; }
+.foot__logo-img--atadi { height: 30px; }
 .foot__logo-img--pvi { height: 34px; }
 .foot__logo-div { width: 1px; height: 30px; background: var(--line); }
 .foot__logo { font-family: var(--font-serif); font-size: 30px; letter-spacing: -0.02em; flex: none; }

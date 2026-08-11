@@ -37,11 +37,15 @@
 <!-- ============ TOP PILL NAVBAR ============ -->
 <header class="nav-wrap" data-screen-label="Navbar">
   <nav class="nav">
-    <a href="#hero" class="nav__logo">
-      <img src="assets/pvi-logo.png" alt="Bảo hiểm PVI" class="nav__logo-pvi" />
+    <div class="nav__logo">
+      <a href="https://www.pvi.com.vn/" target="_blank" rel="noopener" class="brand-link" aria-label="Trang chủ Bảo hiểm PVI">
+        <img src="assets/pvi-logo.png" alt="Bảo hiểm PVI" class="nav__logo-pvi" />
+      </a>
       <span class="nav__logo-div" aria-hidden="true"></span>
-      <img src="assets/atadi-logo.png" alt="Atadi.vn by vntrip" class="nav__logo-atadi" />
-    </a>
+      <a href="https://www.atadi.vn/" target="_blank" rel="noopener" class="brand-link" aria-label="Trang chủ Atadi.vn">
+        <img src="assets/atadi-logo.png" alt="Atadi.vn by vntrip" class="nav__logo-atadi" />
+      </a>
+    </div>
     <button class="nav__toggle" aria-label="Mở menu" aria-expanded="false" id="navToggle">
       <span></span><span></span><span></span>
     </button>
@@ -202,9 +206,9 @@
         <div class="claims">
           <div class="claims__main">
             <ul class="prep__list">
-              <li><span>01</span><p><strong>CMND/CCCD hoặc Hộ chiếu</strong> - ảnh chụp rõ nét.</p></li>
+              <li><span>01</span><p><strong>CMND/CCCD hoặc Hộ chiếu</strong> - ảnh chụp rõ nét của hành khách đang khai báo.</p></li>
               <li><span>02</span><p><strong>Thông báo thay đổi / hoãn / huỷ chuyến</strong> chính thức từ hãng hàng không.</p></li>
-              <li><span>03</span><p><strong>Thẻ lên máy bay (boarding pass)</strong> gốc của chuyến bay ban đầu.</p></li>
+              <li><span>03</span><p><strong>Thẻ lên máy bay (boarding pass)</strong> gốc của chuyến bay ban đầu, đúng hành khách đang khai báo.</p></li>
               <li><span>04</span><p><strong>Tài khoản ngân hàng</strong> để nhận tiền bồi thường.</p></li>
               <li><span>05</span><p><strong>Email đã đăng ký</strong> với hợp đồng - dùng nhận mã OTP đăng nhập.</p></li>
             </ul>
@@ -317,7 +321,9 @@
           </figure>
         </div>
 
-
+        <p class="note">
+          <strong>Với booking đặt chỗ có nhiều hành khách:</strong> Trên Cổng bồi thường sẽ hiển thị hồ sơ bồi thường theo từng khách hàng. Quý&nbsp;khách vui lòng khai báo <strong>lần lượt cho từng người</strong> để đảm bảo rõ ràng về thông tin và có cơ sở cho Bảo hiểm tiếp nhận hồ sơ đầy đủ.
+        </p>
       </div>
 
       <!-- 03 · Trạng thái hồ sơ -->
@@ -471,9 +477,13 @@
   <div class="foot__inner">
     <div class="foot__brand">
       <div class="foot__logos">
-        <img src="assets/atadi-logo.png" alt="Atadi.vn by vntrip" class="foot__logo-img foot__logo-img--atadi" />
+        <a href="https://www.pvi.com.vn/" target="_blank" rel="noopener" class="brand-link" aria-label="Trang chủ Bảo hiểm PVI">
+          <img src="assets/pvi-logo.png" alt="Bảo hiểm PVI" class="foot__logo-img foot__logo-img--pvi" />
+        </a>
         <span class="foot__logo-div" aria-hidden="true"></span>
-        <img src="assets/pvi-logo.png" alt="Bảo hiểm PVI" class="foot__logo-img foot__logo-img--pvi" />
+        <a href="https://www.atadi.vn/" target="_blank" rel="noopener" class="brand-link" aria-label="Trang chủ Atadi.vn">
+          <img src="assets/atadi-logo.png" alt="Atadi.vn by vntrip" class="foot__logo-img foot__logo-img--atadi" />
+        </a>
       </div>
       <p>Chương trình Bảo hiểm trễ chuyến bay DelayCARE - được phân phối qua Atadi.vn và cung cấp bởi Bảo hiểm PVI.</p>
     </div>
