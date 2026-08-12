@@ -253,3 +253,27 @@
   .consent__list a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; font-weight: 400; color: #555; }
   .foot__policies a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8pt; color: #555; }
 }
+
+/* ============ FAQ — bản in bung toàn bộ câu hỏi & đáp án ============ */
+@media print {
+  /* accordion mở sẵn: người đọc bản giấy không bấm được */
+  .faq__panel,
+  .faq__a { grid-template-rows: 1fr !important; transition: none !important; }
+  .faq__panel-in,
+  .faq__a-in { overflow: visible !important; }
+  .faq__gchev,
+  .faq__plus { display: none !important; }
+  .faq__group {
+    border: 1px solid #d5d9e0 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .faq__gbtn { padding: 10px 12px !important; }
+  .faq__gic { background: #eef4fd !important; }
+  .faq__list { padding: 0 12px 4px 12px !important; }
+  .faq__item { page-break-inside: avoid; break-inside: avoid; }
+  .faq__qbtn { padding: 8px 0 !important; }
+  .faq__q { color: #000 !important; }
+  .faq__a p { color: #333 !important; margin-bottom: 10px !important; }
+}

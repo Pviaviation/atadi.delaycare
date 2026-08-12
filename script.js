@@ -255,3 +255,62 @@
 
   render();
 })();
+
+/* =========================================================
+   FAQ — accordion 2 tầng
+   - Bấm nhóm: mở nhóm đó, đóng nhóm khác
+   - Bấm câu hỏi: mở đáp án, đóng đáp án đang mở
+   ========================================================= */
+(function () {
+  "use strict";
+
+  var faq = document.getElementById("faqApp");
+  if (!faq) return;
+
+  var groups = Array.prototype.slice.call(faq.querySelectorAll(".faq__group"));
+  var items  = Array.prototype.slice.call(faq.querySelectorAll(".faq__item"));
+  var open   = -1; /* -1 = chưa mở câu nào */
+
+  function openGroup(g) {
+    groups.forEach(function (x) {
+      var on = x === g;
+      x.classList.toggle("is-open", on);
+      x.querySelector(".faq__gbtn").setAttribute("aria-expanded", on ? "true" : "false");
+    });
+  }
+
+  function closeAllItems() {
+    open = -1;
+    items.forEach(function (it) {
+      it.classList.remove("is-open");
+      it.querySelector(".faq__qbtn").setAttribute("aria-expanded", "false");
+    });
+  }
+
+  /* ---- Bấm vào nhóm ---- */
+  groups.forEach(function (g) {
+    g.querySelector(".faq__gbtn").addEventListener("click", function () {
+      if (!g.classList.contains("is-open")) {
+        openGroup(g);
+        closeAllItems();
+      } else {
+        g.classList.remove("is-open");
+        g.querySelector(".faq__gbtn").setAttribute("aria-expanded", "false");
+        closeAllItems();
+      }
+    });
+  });
+
+  /* ---- Bấm vào câu hỏi: mỗi lúc chỉ mở một đáp án ---- */
+  items.forEach(function (it, i) {
+    it.querySelector(".faq__qbtn").addEventListener("click", function () {
+      var wasOpen = open === i;
+      closeAllItems();
+      if (!wasOpen) {
+        open = i;
+        it.classList.add("is-open");
+        it.querySelector(".faq__qbtn").setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+})();

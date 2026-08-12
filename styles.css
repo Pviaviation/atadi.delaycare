@@ -1571,3 +1571,105 @@ html.reveal-ready .block.in-view .flow__item:nth-child(4) { animation-delay: 0.2
   .usp__ic svg { width: 44px; height: 44px; }
   .usp p { font-size: 14.5px; max-width: 260px; }
 }
+
+/* =========================================================
+   FAQ — nhóm chủ đề thu gọn, mở ra câu hỏi
+   Accordion 2 tầng + thanh điều hướng ‹ › duyệt toàn bộ câu
+   ========================================================= */
+.faq { margin-top: 28px; }
+.faq__groups { display: grid; gap: 12px; }
+
+.faq__group {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, box-shadow 0.25s ease;
+}
+.faq__group.is-open {
+  border-color: rgba(8, 113, 231, 0.42);
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 16px 34px -20px rgba(8, 113, 231, 0.5);
+}
+
+.faq__gbtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px 20px;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-radius: var(--radius);
+}
+.faq__gic {
+  width: 38px; height: 38px;
+  flex: none;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: rgba(8, 113, 231, 0.075);
+  color: var(--blue);
+}
+.faq__gic svg { width: 20px; height: 20px; }
+.faq__gtxt { flex: 1; min-width: 0; }
+.faq__gtxt strong { display: block; font-size: 15.5px; font-weight: 600; letter-spacing: -0.01em; }
+.faq__gtxt em { display: block; font-style: normal; font-size: 13.5px; color: var(--ink-60); margin-top: 3px; text-wrap: pretty; }
+.faq__gchev { flex: none; width: 22px; height: 22px; color: var(--ink-45); transition: transform 0.3s ease, color 0.2s ease; }
+.faq__gchev svg { width: 100%; height: 100%; display: block; }
+.faq__group.is-open .faq__gchev { transform: rotate(180deg); color: var(--blue); }
+
+/* Mở/đóng mượt mà không cần biết trước chiều cao */
+.faq__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.32s ease; }
+.faq__group.is-open .faq__panel { grid-template-rows: 1fr; }
+.faq__panel-in { overflow: hidden; }
+
+.faq__list { list-style: none; margin: 0; padding: 0 20px 6px 73px; }
+.faq__item { border-top: 1px solid var(--line); }
+.faq__qbtn {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.faq__q { flex: 1; font-size: 14.5px; font-weight: 500; line-height: 1.5; text-wrap: pretty; }
+.faq__item.is-open .faq__q { color: var(--blue); }
+
+/* Dấu + xoay thành × khi mở */
+.faq__plus { position: relative; flex: none; width: 18px; height: 18px; margin-top: 2px; transition: transform 0.28s ease; }
+.faq__plus::before,
+.faq__plus::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  background: var(--ink-45);
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+.faq__plus::before { width: 13px; height: 1.6px; transform: translate(-50%, -50%); }
+.faq__plus::after { width: 1.6px; height: 13px; transform: translate(-50%, -50%); }
+.faq__item.is-open .faq__plus { transform: rotate(135deg); }
+.faq__item.is-open .faq__plus::before,
+.faq__item.is-open .faq__plus::after { background: var(--blue); }
+
+.faq__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+.faq__item.is-open .faq__a { grid-template-rows: 1fr; }
+.faq__a-in { overflow: hidden; }
+/* Dàn hết bề ngang khối FAQ; chừa 32px bên phải để mép chữ thẳng với câu hỏi (né cột dấu +) */
+.faq__a p { margin: 0 32px 15px 0; font-size: 14px; line-height: 1.7; color: var(--ink-60); text-wrap: pretty; }
+.faq__a a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+
+@media (max-width: 720px) {
+  .faq__gbtn { gap: 12px; padding: 15px 16px; }
+  .faq__gic { width: 34px; height: 34px; border-radius: 10px; }
+  .faq__gtxt strong { font-size: 15px; }
+  .faq__list { padding: 0 16px 4px 16px; }
+}

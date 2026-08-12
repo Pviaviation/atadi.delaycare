@@ -4,17 +4,20 @@ Trang **policy wording** (quy tắc bảo hiểm) cho chương trình Flight Del
 
 ## 1. Cấu trúc thư mục
 
+Toàn bộ trang nằm ở thư mục gốc của dự án:
+
 ```
-flight-delay-policy/
+atadi.delaycare-main/
 ├── index.html    # Toàn bộ nội dung & cấu trúc trang
 ├── styles.css    # Thiết kế hiển thị màn hình (desktop + mobile)
 ├── print.css     # Tối ưu khi In / xuất PDF khổ A4 (media="print")
 ├── script.js     # Menu mobile, scroll-spy mục lục, nút In
-├── assets/       # Logo PVI, Atadi & mã QR (PNG nền trong suốt)
+├── assets/       # Logo PVI, Atadi, mã QR & bản PDF Quy tắc bảo hiểm
 │   ├── pvi-logo.png
 │   ├── atadi-logo.png
 │   ├── claims-qr.png
-│   └── guide/    # 10 ảnh màn hình Cổng bồi thường UCP (mục Hướng dẫn)
+│   ├── Atadi-DelayCare-Quy-tac-bao-hiem.pdf
+│   └── guide/    # 10 ảnh màn hình Cổng bồi thường UCP (mục Bồi thường)
 │       ├── 01-email.png              # Email thông báo đủ điều kiện
 │       ├── 02-dang-nhap.png          # Màn hình đăng nhập
 │       ├── 03-otp.png                # Email chứa mã OTP
@@ -25,8 +28,14 @@ flight-delay-policy/
 │       ├── 08-ho-so-2.png            # Form hồ sơ (màn 2)
 │       ├── 09-danh-sach-ho-so.png    # Danh sách hồ sơ & trạng thái
 │       └── 10-chi-tiet-ho-so.png     # Chi tiết hồ sơ
+├── uploads/      # Tài liệu nguồn nội bộ (.docx hợp đồng, chương trình BH)
+├── screenshots/  # Ảnh chụp màn hình trang, dùng để đối chiếu khi sửa
 └── README.md     # Tài liệu này
 ```
+
+> **Khi đưa lên GitHub / hosting công khai:** chỉ up `index.html`, `styles.css`, `print.css`, `script.js` và thư mục `assets/`. **Không** up `uploads/` (chứa tài liệu nội bộ) và `screenshots/`.
+
+> Thư mục `flight-delay-policy/` (bản dựng đầu tiên, chưa có phần hướng dẫn 6 bước) đã được xoá ngày 11/08/2026. Mọi nội dung của nó đều đã có trong bản ở thư mục gốc.
 
 ## 2. Cách chạy
 
@@ -63,7 +72,7 @@ Các ô có dạng `[___]` (class `.fill`, viền xanh nét đứt) là **chỗ 
 
 ### Bố cục các phần (theo thứ tự)
 
-1. **Quyền lợi bảo hiểm** (`#quyen-loi`) - 4 thẻ quyền lợi + ghi chú cách tính thời gian trễ · 2. **Đối tượng bảo hiểm** (`#doi-tuong`) · 3. **Định nghĩa chính** (`#dinh-nghia`) · 4. **Bồi thường** (`#quy-trinh-bt`) - chuẩn bị hồ sơ + 6 bước khai báo + trạng thái · 5. **Loại trừ** (`#loai-tru`) · 6. **Điều khoản & xác nhận đồng ý** (`#dieu-khoan`) · 7. **Liên hệ & hỗ trợ** (`#lien-he`).
+1. **Quyền lợi bảo hiểm** (`#quyen-loi`) - 4 thẻ quyền lợi + ghi chú cách tính thời gian trễ · 2. **Đối tượng bảo hiểm** (`#doi-tuong`) · 3. **Định nghĩa chính** (`#dinh-nghia`) · 4. **Bồi thường** (`#quy-trinh-bt`) - chuẩn bị hồ sơ + 6 bước khai báo + trạng thái · 5. **Loại trừ** (`#loai-tru`) · 6. **Điều khoản & xác nhận đồng ý** (`#dieu-khoan`) · 7. **Câu hỏi thường gặp** (`#faq`) · 8. **Liên hệ & hỗ trợ** (`#lien-he`).
 
 > Mục “Xác định thời gian trễ chuyến” trước đây đã **gộp vào Quyền lợi bảo hiểm** vì trùng nội dung (cùng nêu mốc 120 phút, cùng nhắc FlightRadar24). Phần riêng có giá trị được giữ lại: cách tính thời gian trễ và mệnh đề *“tùy thời điểm nào đến trước”* nằm ở `.note` cuối mục Quyền lợi; ràng buộc *“theo quy định trong Hợp đồng / GCNBH”* gộp vào thẻ 03 “Xác minh tự động”.
 
@@ -73,7 +82,8 @@ Các ô có dạng `[___]` (class `.fill`, viền xanh nét đứt) là **chỗ 
 - **Thêm/bớt điểm loại trừ hoặc khoản mục:** thêm `<li>...</li>` trong `<ol class="list list--excl">` (số thứ tự tự động).
 - **Đổi màu thương hiệu:** sửa biến CSS ở đầu `styles.css` trong khối `:root` (`--blue`, `--ink`, `--paper`...).
 - **Đổi font:** thay thẻ `<link>` Google Fonts trong `index.html` và biến `--font-serif` / `--font-sans`.
-- **Logo:** đặt trong thư mục `assets/`. Nav hiển thị logo PVI trước rồi Atadi; footer hiển thị cả hai. Thay logo bằng cách ghi đè file `assets/pvi-logo.png` / `assets/atadi-logo.png` (giữ nền trong suốt) hoặc đổi đường dẫn `src` trong `index.html`. Chỉnh chiều cao hiển thị qua các rule `.nav__logo-pvi`, `.nav__logo-atadi`, `.foot__logo-img--*` trong `styles.css`.
+- **Logo:** đặt trong thư mục `assets/`. Nav và footer đều hiển thị logo PVI trước rồi Atadi. Thay logo bằng cách ghi đè file `assets/pvi-logo.png` / `assets/atadi-logo.png` (giữ nền trong suốt) hoặc đổi đường dẫn `src` trong `index.html`. Chỉnh chiều cao hiển thị qua các rule `.nav__logo-pvi`, `.nav__logo-atadi`, `.foot__logo-img--*` trong `styles.css`.
+- **Logo là link về trang chủ:** mỗi logo được bọc trong thẻ `a.brand-link` mở tab mới - PVI → `pvi.com.vn`, Atadi → `atadi.vn`. Chiều cao hai logo được đặt lệch nhau (nav 30px / 26px, footer 34px / 30px) để **bề ngang hiển thị bằng nhau**, do ảnh Atadi có tỷ lệ dài hơn (3.23 so với 2.72). Nếu đổi file logo, chỉnh lại chiều cao theo nguyên tắc cân bề ngang chứ không cân chiều cao.
 - **Nền trời động ở Hero:** điều khiển bằng các rule `.sky`, `.cloud`, `.plane` trong `styles.css`; tự tắt khi thiết bị bật `prefers-reduced-motion` và ẩn khi in.
 
 ### Hero - 3 điểm vượt trội (`.usps`)
@@ -106,12 +116,26 @@ Gộp chung phần quy trình và phần hướng dẫn thao tác, gồm: **01 C
 Nội dung hướng dẫn lấy từ tài liệu `HDSD-UCP-BaoHiem-TreChuyenBay_updated.docx` (PVI × Igloo).
 
 - **Sửa lời văn 6 bước:** trong `index.html`, mỗi bước là một `<li class="walk__step" data-step="N">`; tiêu đề nằm trong `<strong>`, mô tả trong `<em>` (mô tả chỉ hiện khi bước đang được chọn).
+- **Lưu ý booking nhiều hành khách:** đặt ở `<p class="note">` ngay dưới walkthrough, **ngoài** khối 6 bước. Lý do: mô tả trong `<em>` của mỗi bước bị ẩn cho tới khi khách bấm vào bước đó (`.walk__txt em { display: none }`), nên lưu ý quan trọng phải nằm ngoài mới luôn hiển thị. Nội dung: Cổng bồi thường hiển thị hồ sơ theo từng khách hàng, khách khai báo lần lượt cho từng người.
 - **Đổi / thêm ảnh minh hoạ:** sửa mảng `SLIDES` ở cuối `script.js` - mỗi phần tử gồm `step` (thuộc bước nào), `img` (đường dẫn ảnh) và `cap` (chú thích). Một bước có thể có nhiều ảnh; chấm tròn và nút mũi tên tự sinh theo số phần tử.
 - **Đổi địa chỉ Cổng:** sửa ở 2 chỗ trong `index.html` - thanh URL giả lập `.brw__url` và nút `Mở Cổng bồi thường` trong thẻ QR - đồng thời tạo lại `assets/claims-qr.png`.
 - **Thẻ truy cập Cổng:** mã QR và nút bấm nằm chung một thẻ (`.claims__qr`), ngăn bởi dải “hoặc” (`.qr__or`), vì cả hai dẫn tới cùng một địa chỉ. Khi in, dải “hoặc” và nút tự ẩn (chỉ giữ mã QR để quét).
 - **Tạo hình ô cửa sổ máy bay:** thẻ `.claims__qr` dùng `border-radius: 78px / 92px` + nền trời sáng + viền bezel kép (3 lớp `inset` box-shadow) + một áng mây trôi ở `::before` (animation `qrCloud`) - cùng ngôn ngữ với `.porthole` ở mục Liên hệ. Nếu đổi bo góc, nhớ chỉnh `padding` theo để nút và mã QR không chạm đường cong. Khi in, bo góc và mây tự tắt.
 - **Tương tác:** bấm vào bước để nhảy tới ảnh đầu của bước đó; mũi tên / chấm tròn / phím `←` `→` để chuyển ảnh; bấm ảnh (hoặc nút kính lúp) để phóng to, `Esc` để đóng.
 - **Khi in:** `print.css` tự bung toàn bộ mô tả 6 bước, ẩn chấm tròn / mũi tên / nút CTA và giới hạn ảnh cao tối đa 90mm.
+
+### Mục “Câu hỏi thường gặp” (`#faq`)
+
+Đặt **ngay trước** mục Liên hệ & hỗ trợ - khách tự tìm đáp án trước, không thấy thì cuộn tiếp một đoạn là gặp hotline. Đừng đảo lên trước Điều khoản: khối Liên hệ phải là điểm kết của trang.
+
+- **19 câu, gom thành 5 nhóm** (`.faq__group`): Quyền lợi & mức chi trả · Đối tượng & phạm vi · Hồ sơ & cách khai báo · Thời hạn & nhận tiền · Trường hợp không được chi trả.
+- **Quy ước lời văn:** câu hỏi viết theo giọng khách hàng (chủ ngữ “tôi”), câu trả lời viết theo giọng đơn vị bảo hiểm - luôn có chủ ngữ *Bảo hiểm PVI* hoặc *Quý khách*, không trả lời cụt.
+- **Tương tác:** accordion 2 tầng - bấm nhóm để mở danh sách câu hỏi (mỗi lúc chỉ một nhóm mở), bấm câu hỏi để mở đáp án (mỗi lúc chỉ một đáp án). Đóng nhóm thì đáp án bên trong đóng theo. Toàn bộ nằm ở cuối `script.js`.
+- **Đóng/mở mượt** bằng kỹ thuật `grid-template-rows: 0fr → 1fr` (không cần biết trước chiều cao), nên mỗi panel phải giữ đúng 2 lớp: `.faq__panel > .faq__panel-in` và `.faq__a > .faq__a-in`, lớp trong có `overflow: hidden`. Bỏ lớp trong là mất hiệu ứng.
+- **Nội dung phải khớp các mục trên trang.** Số liệu trong FAQ (120 phút · 500.000đ · 01 năm · 07 ngày làm việc · 02-85 tuổi) lấy từ các mục Quyền lợi / Đối tượng / Bồi thường - khi sửa quy tắc, sửa cả hai chỗ.
+- **Khi in:** `print.css` bung sẵn toàn bộ câu hỏi và đáp án, ẩn dấu +/chevron.
+
+> Lưu ý khi kiểm tra bằng Browser pane: tab chạy nền không tick animation nên panel accordion đọc ra chiều cao 0. Tạm chèn `.faq__panel,.faq__a{transition:none}` rồi mới đo, hoặc kiểm tra trên trình duyệt thật.
 
 ## 6. Khả năng tương thích
 
