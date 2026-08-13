@@ -794,7 +794,11 @@ a { color: inherit; text-decoration: none; }
 .contact__card strong { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
 .contact__num { white-space: nowrap; }
 .contact__alt { font-size: 14.5px !important; color: rgba(255,255,255,0.72); }
-.contact__email { font-size: 15px; white-space: nowrap; }
+/* Hai dòng email: nhãn mục đích một cột, địa chỉ một cột - địa chỉ căn thẳng nhau
+   và giữ đúng cỡ chữ 16px/600 như số hotline & tên đơn vị bảo hiểm */
+.contact__emails { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; row-gap: 6px; align-items: baseline; }
+.contact__elabel { font-size: 12px; font-weight: 400; color: rgba(255, 255, 255, 0.62); }
+.contact__eaddr { white-space: nowrap; }
 .contact__card--wide { grid-column: 1 / -1; }
 .contact__card .fill { color: var(--blue-tint); background: rgba(8, 113, 231, 0.22); border-color: rgba(255, 255, 255, 0.25); }
 
@@ -872,6 +876,9 @@ a { color: inherit; text-decoration: none; }
   .porthole { width: 34px; height: 46px; }
   .contact__body { margin-left: 0; grid-template-columns: 1fr; gap: 22px; }
   .contact__cards { grid-template-columns: 1fr; }
+  /* Điện thoại: nhãn nằm trên, địa chỉ email xuống dòng dưới - hai cột sẽ tràn khỏi thẻ */
+  .contact__emails { grid-template-columns: 1fr; row-gap: 2px; }
+  .contact__emails .contact__elabel ~ .contact__elabel { margin-top: 10px; }
   .doc { padding: 24px 18px 60px; }
   .block__lead, .note, .step p, .card p, .callout p { text-align: justify; }
 }

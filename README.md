@@ -68,7 +68,7 @@ Các ô có dạng `[___]` (class `.fill`, viền xanh nét đứt) là **chỗ 
 
 > Địa chỉ Cổng bồi thường `https://pvi-flight-delay.ucp-latest.iglooinsure.com/` **đã được xác nhận là link live** (dù tên miền có chuỗi `ucp-latest`). Địa chỉ này xuất hiện ở 3 chỗ: mã QR `assets/claims-qr.png`, thanh URL giả lập `.brw__url`, và nút **Mở Cổng bồi thường** - cả 3 phải trỏ cùng một đích khi cập nhật.
 
-> Quyền lợi đã cố định: trễ **từ 120 phút liên tục trở lên** → **500.000 VND / chuyến / người** (theo Giấy chứng nhận bảo hiểm). Đơn vị bảo hiểm: **Công ty Bảo hiểm PVI Thủ Đô**. Hotline **(+84) 24 3377 2288 / (84) 969 871 166**, International SOS **(84) 28 3999 8110**, email **atadi.support@pvi.com.vn** đã điền sẵn.
+> Quyền lợi đã cố định: trễ **từ 120 phút liên tục trở lên** → **500.000 VND / chuyến / người** (theo Giấy chứng nhận bảo hiểm). Đơn vị bảo hiểm: **Công ty Bảo hiểm PVI Thủ Đô**. Hotline **(+84) 24 3377 2288 / (84) 969 871 166**, email **atadi.support@pvi.com.vn** (về đơn bảo hiểm) và **claim.vn@iglooinsure.com** (về hồ sơ bồi thường) đã điền sẵn. Thẻ “Hỗ trợ khẩn cấp · International SOS” đã được bỏ khỏi mục Liên hệ (13/08/2026); cả 3 thẻ còn lại đều chiếm trọn bề ngang (`.contact__card--wide`).
 
 ### Bố cục các phần (theo thứ tự)
 
@@ -128,7 +128,11 @@ Nội dung hướng dẫn lấy từ tài liệu `HDSD-UCP-BaoHiem-TreChuyenBay_
 
 Đặt **ngay trước** mục Liên hệ & hỗ trợ - khách tự tìm đáp án trước, không thấy thì cuộn tiếp một đoạn là gặp hotline. Đừng đảo lên trước Điều khoản: khối Liên hệ phải là điểm kết của trang.
 
-- **19 câu, gom thành 5 nhóm** (`.faq__group`): Quyền lợi & mức chi trả · Đối tượng & phạm vi · Hồ sơ & cách khai báo · Thời hạn & nhận tiền · Trường hợp không được chi trả.
+- **46 câu, gom thành 5 nhóm** (`.faq__group`): Điều kiện tham gia & mua bảo hiểm (10) · Quyền lợi & cách tính thời gian trễ (6) · Tình huống thực tế: trễ, hủy & đổi chuyến (9) · Trường hợp không được chi trả (10) · Hồ sơ, khai báo & nhận tiền (11).
+- **Nguồn nội dung:** 35 câu do Igloo bổ sung (file `FAQ_BaoHiem_TreChuyenBay_PVI_35Cau.xlsx`, 7 nhóm gốc) đã được gộp vào 12 câu sẵn có ngày 13/08/2026. **Giữ đúng 5 nhóm** là ràng buộc thiết kế - thêm nhóm thứ 6 làm mục FAQ dài quá tầm nhìn một màn hình. Câu mới phải xếp vào 1 trong 5 nhóm hiện có.
+- ⚠️ **Câu “hủy hợp đồng - hoàn phí” KHÔNG lấy theo file Igloo.** File Igloo ghi hoàn **80%**; Quy tắc bảo hiểm của chương trình Atadi (Phần II, Mục 4 - Chấm dứt Hợp đồng bảo hiểm) quy định hoàn **100%** phí nếu gửi văn bản đề nghị chấm dứt trước giờ khởi hành theo lịch trình ít nhất 24 giờ, không phân biệt bên nào đề nghị; dưới 24 giờ thì không hoàn phí. Trang đang để **100%** theo Quy tắc.
+- 7 câu cũ bị gỡ vì trùng nội dung với bản Igloo (mốc trễ, số tiền, cách tính giờ, hạn nộp hồ sơ, thời gian chi trả, đến sân bay muộn, dịch bệnh/cơ quan nhà nước) - bản Igloo có căn cứ điều khoản nên được ưu tiên giữ.
+- **Cột “Căn cứ Điều khoản & Tài liệu” trong file Excel chưa đưa lên trang** (giữ giọng hướng khách hàng như các mục khác). Nếu cần hiển thị, thêm class `.faq__ref` và một `<p>` cuối mỗi `.faq__a-in`.
 - **Quy ước lời văn:** câu hỏi viết theo giọng khách hàng (chủ ngữ “tôi”), câu trả lời viết theo giọng đơn vị bảo hiểm - luôn có chủ ngữ *Bảo hiểm PVI* hoặc *Quý khách*, không trả lời cụt.
 - **Tương tác:** accordion 2 tầng - bấm nhóm để mở danh sách câu hỏi (mỗi lúc chỉ một nhóm mở), bấm câu hỏi để mở đáp án (mỗi lúc chỉ một đáp án). Đóng nhóm thì đáp án bên trong đóng theo. Toàn bộ nằm ở cuối `script.js`.
 - **Đóng/mở mượt** bằng kỹ thuật `grid-template-rows: 0fr → 1fr` (không cần biết trước chiều cao), nên mỗi panel phải giữ đúng 2 lớp: `.faq__panel > .faq__panel-in` và `.faq__a > .faq__a-in`, lớp trong có `overflow: hidden`. Bỏ lớp trong là mất hiệu ứng.
