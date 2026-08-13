@@ -742,11 +742,11 @@
             </div>
             <div class="contact__card contact__card--wide">
               <span>Email hỗ trợ</span>
+              <!-- Mỗi dòng email là một <div> riêng: nếu styles.css chưa kịp cập nhật,
+                   hai dòng vẫn tự xuống hàng thay vì dính vào nhau -->
               <div class="contact__emails">
-                <span class="contact__elabel">Về đơn bảo hiểm</span>
-                <strong class="contact__eaddr">atadi.support@pvi.com.vn</strong>
-                <span class="contact__elabel">Về hồ sơ bồi thường</span>
-                <strong class="contact__eaddr">claim.vn@iglooinsure.com</strong>
+                <div class="contact__erow"><span class="contact__elabel">Về đơn bảo hiểm:</span> <strong class="contact__eaddr">atadi.support@pvi.com.vn</strong></div>
+                <div class="contact__erow"><span class="contact__elabel">Về hồ sơ bồi thường:</span> <strong class="contact__eaddr">claim.vn@iglooinsure.com</strong></div>
               </div>
             </div>
             <div class="contact__card contact__card--wide">
